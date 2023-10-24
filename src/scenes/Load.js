@@ -17,9 +17,26 @@ class Load extends Phaser.Scene {
 
         // step into assets folder
         this.load.path = "./assets/";
+
+        // load player
+        this.load.spritesheet("slime", "slime.png", {
+            frameWidth: 16,
+            frameHeight: 16
+        });
+
+        // load tile assets
+        this.load.image("biomThingsImage", "Basic Grass Biom things 1.png");
+        this.load.image("fencesImage", "Fences.png");
+        this.load.image("grassImage", "Grass.png");
+        this.load.image("tilledDirtImage", "Tilled Dirt.png");
+        this.load.image("waterImage", "Water.png");
+
+        // load map json file
+        this.load.tilemapTiledJSON("tilemapJSON", "map.json");
     }
 
     create() {
+        console.log("heading to main scene");
         this.scene.start("MainScene");
     }
 }

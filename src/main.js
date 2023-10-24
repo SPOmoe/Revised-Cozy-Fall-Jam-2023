@@ -1,7 +1,7 @@
 let config = {
     type: Phaser.CANVAS,
-    width: 640,
-    height: 480,
+    width: 1024,
+    height: 720,
 
     physics: {
         default: "arcade",
@@ -12,5 +12,7 @@ let config = {
     
     scene: [Load, MainScene],
 }
+
+let keyW, keyS, keyA, keyD;
 
 let game = new Phaser.Game(config);
