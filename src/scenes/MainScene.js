@@ -26,7 +26,7 @@ class MainScene extends Phaser.Scene {
 
 
         // add player
-        this.slime = new Player(this, 32, 32, 'slime', 0).setOrigin(0.5, 0.5);
+        this.slime = new Player(this, game.config.width/2, 60, 'slime', 0).setOrigin(0.5, 0.5);
 
         // creating animation for player
         this.anims.create({
