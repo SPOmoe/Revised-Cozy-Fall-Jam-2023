@@ -6,12 +6,24 @@ class MainScene extends Phaser.Scene {
     create() {
         // add map to scene with the assets used
         const map = this.add.tilemap("tilemapJSON");
+        const playerTiles = map.addTilesetImage("slime", "Slimey");
         const grassTiles = map.addTilesetImage("Grass", "grassImage");
-        const treeTiles = map.addTilesetImage("Basic Grass Biom things 1", "biomThingsImage");
+        const grassBiomeTiles = map.addTilesetImage("Basic Grass Biom things 1", "biomThingsImage");
+        const fenceTiles = map.addTilesetImage("Fences", "fencesImage");
+        const dirtTiles = map.addTilesetImage("Tilled Dirt", "tilledDirtImage");
+        // const waterTiles = map.addTilesetImage("Water", "waterImage");
+        const npcTiles = map.addTilesetImage("Free Cow Sprites", "cowNPC");
+        const houseTiles = map.addTilesetImage("Free_Chicken_House", "chickenHouse");
 
         // create layers
-        const bgLayer = map.createLayer("Background", grassTiles, 0, 0);
-        const treeLayer = map.createLayer("Trees", treeTiles, 0, 0).setDepth(100);
+        const playerLayer = map.createLayer("Player", playerTiles, 0, 0);
+        const grassLayer = map.createLayer("Grass", grassTiles, 0, 0);
+        const biomeLayer = map.createLayer("Misc. Pretties", grassBiomeTiles, 0, 0).setDepth(100);
+        const fenceLayer = map.createLayer("Fences", fenceTiles, 0, 0).setDepth(100);
+        const dirtLayer = map.createLayer("Road", dirtTiles, 0, 0);
+        const npcLayer = map.createLayer("NPCs", npcTiles, 0, 0).setDepth(100);
+        const houseLayer = map.createLayer("Houses", houseTiles, 0, 0).setDepth(100);
+
 
         // add player
         this.slime = new Player(this, 32, 32, 'slime', 0).setOrigin(0.5, 0.5);
@@ -34,10 +46,18 @@ class MainScene extends Phaser.Scene {
         this.slime.body.setCollideWorldBounds(true);
 
         // create collisions by layer
-        treeLayer.setCollisionByProperty({collides: true});
+        biomeLayer.setCollisionByProperty({collides: true});
+        fenceLayer.setCollisionByProperty({collides: true});
+        npcLayer.setCollisionByProperty({collides: true});
+        houseLayer.setCollisionByProperty({collides: true});
+
 
         // set player to collide to layers
-        this.physics.add.collider(this.slime, treeLayer);
+        this.physics.add.collider(this.slime, biomeLayer);
+        this.physics.add.collider(this.slime, fenceLayer);
+        this.physics.add.collider(this.slime, npcLayer);
+        this.physics.add.collider(this.slime, houseLayer);
+
 
         // bound camera to player
         this.cameras.main.setBounds(0, 0, map.widthInPixels, map.heightInPixels);

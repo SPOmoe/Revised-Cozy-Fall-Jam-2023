@@ -29,13 +29,19 @@ class Load extends Phaser.Scene {
         this.load.image("fencesImage", "Fences.png");
         this.load.image("grassImage", "Grass.png");
         this.load.image("tilledDirtImage", "Tilled Dirt.png");
-        this.load.image("waterImage", "Water.png");
+        this.load.image("cowNPC", "Free Cow Sprites.png");
+        this.load.image("chickenHouse", "Free_Chicken_House.png");
+        this.load.image("Slimey", "slime.png");
+
+
+        
 
         // load map json file
-        this.load.tilemapTiledJSON("tilemapJSON", "map.json");
+        this.load.tilemapTiledJSON("tilemapJSON", "tempMapLayout.json");
     }
 
     create() {
+        console.log("heading to main scene");
         this.scene.start("MainScene");
     }
 }
