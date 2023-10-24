@@ -13,7 +13,7 @@ class MainScene extends Phaser.Scene {
         const bgLayer = map.createLayer("Background", grassTiles, 0, 0);
         const treeLayer = map.createLayer("Trees", treeTiles, 0, 0).setDepth(100);
 
-        this.slime = this.physics.add.sprite(32, 32, "slime", 0);
+        this.slime = new Player(this, 32, 32, 'slime', 0).setOrigin(0.5, 0.5);
         this.anims.create({
             key: "bounce",
             frameRate: 8,
@@ -31,6 +31,10 @@ class MainScene extends Phaser.Scene {
         treeLayer.setCollisionByProperty({collides: true});
 
         this.physics.add.collider(this.slime, treeLayer);
+
+        this.cameras.main.setBounds(0, 0, map.widthInPixels, map.heightInPixels);
+        this.cameras.main.startFollow(this.slime, true, 0.25, 0.25);
+        this.physics.world.bounds.setTo(0, 0, map.widthInPixels, map.heightInPixels);
 
         keyW = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.W);
         keyS = this.input.keyboard.addKey(Phaser.Input.Keyboard.KeyCodes.S);

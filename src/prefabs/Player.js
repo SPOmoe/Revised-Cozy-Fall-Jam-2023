@@ -19,7 +19,7 @@ class Player extends Phaser.Physics.Arcade.Sprite {
 
         if (keyA.isDown) {
             this.direction.x = -1;
-        } else if (keyS.isDown) {
+        } else if (keyD.isDown) {
             this.direction.x = 1;
         }
 
