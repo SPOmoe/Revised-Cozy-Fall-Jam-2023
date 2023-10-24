@@ -36,7 +36,6 @@ class Load extends Phaser.Scene {
     }
 
     create() {
-        console.log("heading to main scene");
         this.scene.start("MainScene");
     }
 }

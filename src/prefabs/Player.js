@@ -8,9 +8,9 @@ class Player extends Phaser.Physics.Arcade.Sprite {
     }
 
     update () {
-
         this.direction = new Phaser.Math.Vector2(0);
 
+        // check for player input
         if (keyW.isDown) {
             this.direction.y = -1;
         } else if (keyS.isDown) {
@@ -23,6 +23,7 @@ class Player extends Phaser.Physics.Arcade.Sprite {
             this.direction.x = 1;
         }
 
+        // move player in 8 directions depending on input
         this.direction.normalize();
         this.setVelocityX(this.moveSpeed * this.direction.x);
         this.setVelocityY(this.moveSpeed * this.direction.y);
