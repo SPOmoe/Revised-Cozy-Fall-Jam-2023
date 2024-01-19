@@ -18,7 +18,7 @@ class MainScene extends Phaser.Scene {
         // create layers
         const playerLayer = map.createLayer("Player", playerTiles, 0, 0);
         const grassLayer = map.createLayer("Grass", grassTiles, 0, 0);
-        const biomeLayer = map.createLayer("Misc. Pretties", grassBiomeTiles, 0, 0).setDepth(100);
+        const fallenTreeLayer = map.createLayer("Misc. Pretties", grassBiomeTiles, 0, 0).setDepth(100);
         const fenceLayer = map.createLayer("Fences", fenceTiles, 0, 0).setDepth(100);
         const dirtLayer = map.createLayer("Road", dirtTiles, 0, 0);
         const npcLayer = map.createLayer("NPCs", npcTiles, 0, 0).setDepth(100);
@@ -46,14 +46,14 @@ class MainScene extends Phaser.Scene {
         this.slime.body.setCollideWorldBounds(true);
 
         // create collisions by layer
-        biomeLayer.setCollisionByProperty({collides: true});
+        fallenTreeLayer.setCollisionByProperty({collides: true});
         fenceLayer.setCollisionByProperty({collides: true});
         npcLayer.setCollisionByProperty({collides: true});
         houseLayer.setCollisionByProperty({collides: true});
 
 
         // set player to collide to layers
-        this.physics.add.collider(this.slime, biomeLayer);
+        this.physics.add.collider(this.slime, fallenTreeLayer);
         this.physics.add.collider(this.slime, fenceLayer);
         this.physics.add.collider(this.slime, npcLayer);
         this.physics.add.collider(this.slime, houseLayer);
