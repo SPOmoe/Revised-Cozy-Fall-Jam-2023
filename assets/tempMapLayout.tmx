@@ -88,6 +88,16 @@
  </tileset>
  <tileset firstgid="17" name="Basic Grass Biom things 1" tilewidth="16" tileheight="16" tilecount="45" columns="9">
   <image source="Basic Grass Biom things 1.png" trans="ff00ff" width="144" height="80"/>
+  <tile id="16">
+   <properties>
+    <property name="collides" type="bool" value="true"/>
+   </properties>
+  </tile>
+  <tile id="17">
+   <properties>
+    <property name="collides" type="bool" value="true"/>
+   </properties>
+  </tile>
   <tile id="21">
    <properties>
     <property name="collides" type="bool" value="true"/>
@@ -129,6 +139,16 @@
    </properties>
   </tile>
   <tile id="39">
+   <properties>
+    <property name="collides" type="bool" value="true"/>
+   </properties>
+  </tile>
+  <tile id="41">
+   <properties>
+    <property name="collides" type="bool" value="true"/>
+   </properties>
+  </tile>
+  <tile id="42">
    <properties>
     <property name="collides" type="bool" value="true"/>
    </properties>
